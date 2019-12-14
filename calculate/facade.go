@@ -14,12 +14,12 @@ func Calculate(a, b int) string {
 
 	go func() {
 		time.Sleep(time.Second * 5)
-		valueA <- calculateA(a)
+		valueA <- calculateFactorial(a)
 	}()
 
 	go func() {
 		time.Sleep(time.Second * 5)
-		valueB <- calculateB(b)
+		valueB <- calculateFactorial(b)
 	}()
 
 	x := <-valueA
@@ -28,10 +28,10 @@ func Calculate(a, b int) string {
 	return string(resp)
 }
 
-func calculateA(a int) int {
+func calculateFactorial(a int) int {
 	var factorialA = a
 	n := 1
-	if a == 0 {
+	if a == 0 || a == 1 {
 		return 1
 	}
 
@@ -40,19 +40,4 @@ func calculateA(a int) int {
 		n++
 	}
 	return factorialA
-}
-
-func calculateB(b int) int {
-	var factorialB = b
-	n := 1
-
-	if b == 0 {
-		return 1
-	}
-
-	for n < b {
-		factorialB = factorialB * (b - n)
-		n++
-	}
-	return factorialB
 }
