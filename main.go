@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
-	"github.com/olugbokikisemiu/meant4Task/calculate"
+	"github.com/olugbokikisemiu/Meant4Task/calculate"
 )
 
 func main() {
